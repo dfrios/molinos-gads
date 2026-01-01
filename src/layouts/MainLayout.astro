@@ -1,0 +1,47 @@
+---
+import { Font } from "astro:assets";
+
+import "@/styles/global.css";
+import config from "@/data/config.json";
+
+import MetaPixelHead from "@/components/base/MetaPixelHead.astro";
+import MetaPixelBody from "@/components/base/MetaPixelBody.astro";
+import GoogleTagManagerHead from "@/components/base/GoogleTagManagerHead.astro";
+import GoogleTagManagerBody from "@/components/base/GoogleTagManagerBody.astro";
+import OpenGraph from "@/components/base/OpenGraph.astro";
+
+import type { lang } from "@interfaces/lang";
+interface Props {
+  lang: lang;
+  className?: string;
+}
+
+const { lang } = Astro.props;
+const constants = config[lang];
+---
+
+<!doctype html>
+<html lang={lang} class="h-full scroll-smooth" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <script src="./src/scripts/scripts.ts" defer is:inline></script>
+    <title>{constants.TITLE}</title>
+
+    <GoogleTagManagerHead />
+    <MetaPixelHead />
+    <OpenGraph lang={lang} />
+
+    <Font cssVariable="--font-title" preload />
+    <!-- <Font cssVariable="--font-roboto-italic" preload /> -->
+  </head>
+  <body class="font-roboto clamp-[py,5,10] clamp-[text,sm,base] text-balance bg-background text-foreground-1">
+    <GoogleTagManagerBody />
+    <MetaPixelBody />
+
+    <slot />
+  </body>
+</html>

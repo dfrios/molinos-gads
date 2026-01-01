@@ -1,0 +1,20 @@
+---
+import type { lang } from "@interfaces/lang";
+import config from "@/data/config.json";
+
+interface Props {
+  lang: lang;
+}
+
+const { lang } = Astro.props;
+
+const constants = config[lang];
+---
+
+<meta property="og:title" content={constants.TITLE} />
+<meta property="og:description" content={constants.DESCRIPTION} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={constants.URL} />
+<meta property="og:image" content="/opengraph.jpg" />
+<meta property="og:image:type" content="image/jpg" />
+<meta property="og:locale" content={lang} />

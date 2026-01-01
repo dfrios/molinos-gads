@@ -1,0 +1,20 @@
+---
+import Config from "@data/config.json";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="5;url=/es/404" />
+    <title>{Config.es.TITLE}</title>
+    <script>
+      const locale = new Intl.Locale(navigator.language);
+
+      if (locale.language === "en") window.location.href = "/en/404";
+      else window.location.href = "/es/404";
+    </script>
+  </head>
+  <body> </body>
+</html>
