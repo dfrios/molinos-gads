@@ -2,15 +2,17 @@
 import { twMerge } from 'tailwind-merge';
 
 interface Props {
+  href?: string;
+  target?: '_blank' | '_parent' | '_self' | '_top';
   variant?: string;
   xClass?: string;
 }
 
 // TODO: Use or delete "variant"
-const { variant, xClass } = Astro.props;
+const { href, target, variant, xClass } = Astro.props;
 ---
 
 
-<button class={twMerge('bg-accent border-2 border-background text-background rounded-full px-4 py-2', xClass)}>
+<a role="button" class={twMerge('bg-accent border-2 border-background text-background rounded-full px-4 py-2', xClass)} href={href ?? '#!'} target={target ?? '_self'}>
   <slot />
-</button>
+</a>
