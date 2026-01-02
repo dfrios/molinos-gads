@@ -44,6 +44,9 @@ const setLitepicker = (inputField : HTMLInputElement, lang: ('es' | 'en'), urlBa
   new Litepicker({
     element: inputField,
     plugins: ['mobilefriendly'],
+    mobilefriendly: {
+      breakpoint: 809,
+    },
     singleMode: false,
     format: 'MMM DD',
     firstDay: 0,
@@ -51,6 +54,7 @@ const setLitepicker = (inputField : HTMLInputElement, lang: ('es' | 'en'), urlBa
     minDate: new Date(new Date().setDate(new Date().getDate() - 1)),
     numberOfMonths: 2,
     tooltipText,
+    
     tooltipNumber: (totalDays : number) => {
       return totalDays - 1;
     },
