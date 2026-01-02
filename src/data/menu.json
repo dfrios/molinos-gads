@@ -1,0 +1,26 @@
+[
+  {
+    "label": {
+      "es": "Amenidades",
+      "en": "Amenities"
+    },
+    "href": "/#amenities",
+    "target": ""
+  },
+  {
+    "label": {
+      "es": "Galería",
+      "en": "Gallery"
+    },
+    "href": "/#gallery",
+    "target": ""
+  },
+  {
+    "label": {
+      "es": "Ubicación",
+      "en": "Location"
+    },
+    "href": "/#location",
+    "target": ""
+  }
+]

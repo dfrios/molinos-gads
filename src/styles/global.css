@@ -244,3 +244,63 @@ input[type="number"] {
     transform-origin: 16% 50%;
   }
 }
+
+svg.logo-svg {
+  circle {
+    fill: transparent;
+    stroke: transparent;
+    stroke-width: 10;
+    stroke-dasharray: 580;
+    stroke-dashoffset: 380;
+    animation: 3s forwards 0s ease-in-out circleAnimation;
+  }
+
+  .logo-svg-isotipo,
+  .logo-svg-molinos,
+  .logo-svg-plaza {
+    stroke: transparent;
+    fill: transparent;
+    animation: 2s forwards 0s ease-in-out textAnimation;
+  }
+}
+
+@keyframes circleAnimation {
+  0% {
+    fill: transparent;
+    stroke: transparent;
+    stroke-dasharray: 580;
+    stroke-dashoffset: 380;
+  }
+  30% {
+    stroke: #8c3c14;
+  }
+  40% {
+    fill: transparent;
+  }
+  60% {
+    fill: #8c3c14;
+    stroke-dasharray: 1150;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    fill: #8c3c14;
+    stroke: #8c3c14;
+    stroke-dasharray: 1150;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes textAnimation {
+  0% {
+    stroke: transparent;
+    fill: transparent;
+  }
+  70% {
+    stroke: transparent;
+    fill: transparent;
+  }
+  100% {
+    stroke: white;
+    fill: white;
+  }
+}

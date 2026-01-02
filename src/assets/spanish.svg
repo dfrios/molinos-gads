@@ -1,0 +1,17 @@
+<svg version="1.1" viewBox="0 0 52.917 31.91" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clipPath231">
+      <rect x="1.7577e-6" y=".0001096" width="900" height="600" rx="54.272" ry="60" fill="#fff" />
+    </clipPath>
+    <filter id="filter230" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB">
+      <feColorMatrix type="saturate" values="1" />
+    </filter>
+  </defs>
+  <g transform="translate(-173.04 -40.217)">
+    <g transform="matrix(.058796 0 0 .053184 173.04 40.217)" clip-path="url(#clipPath231)" filter="url(#filter230)">
+      <path d="m0 0h900v600h-900z" fill="#ffcd00" />
+      <path d="m0 300h900v300h-900z" fill="#003087" />
+      <path d="m0 450h900v150h-900z" fill="#c8102e" />
+    </g>
+  </g>
+</svg>
