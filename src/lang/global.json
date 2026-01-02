@@ -1,8 +1,10 @@
 {
   "es": {
-    "BOOKING": "Reservar"
+    "BOOKING": "Reservar",
+    "DATE_RANGE": "Fechas"
   },
   "en": {
-    "BOOKING": "Book"
+    "BOOKING": "Book",
+    "DATE_RANGE": "Dates"
   }
 }

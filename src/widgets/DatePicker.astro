@@ -1,0 +1,145 @@
+---
+import type { lang } from "@interfaces/lang";
+
+import { twMerge } from "tailwind-merge";
+
+import config from "@data/config.json";
+
+interface Props {
+  lang: lang;
+  placeHolder: string;
+  xClass?: string;
+}
+
+const { lang, placeHolder, xClass } = Astro.props;
+
+const URL_SITEMINDER = config[lang].URL_SITEMINDER;
+---
+
+<date-picker data-urlsiteminder={URL_SITEMINDER} data-lang={lang} class="w-full max-w-60">
+  <input
+    id="litepicker"
+    placeholder={placeHolder}
+    class={twMerge(
+      "w-full text-xs text-foreground text-center border-background border-4 rounded-lg py-2 [background:right_center/1.75rem_no-repeat_url(/img/calendar.svg)_white] pr-8 tablet:text-base tablet:[background:right_center/2.5rem_no-repeat_url(/img/calendar.svg)_white]",
+      xClass
+    )}
+  />
+</date-picker>
+
+
+<script>
+import Litepicker from 'litepicker';
+import 'litepicker/dist/plugins/mobilefriendly';
+
+interface iDate {
+  dateInstance: Date,
+  lang: string
+}
+
+const setLitepicker = (inputField : HTMLInputElement, lang: ('es' | 'en'), urlBase: string) => {
+
+  const tooltipText = (lang === 'es') ? { one: 'noche', other: 'noches' } : { one: 'night', other: 'nights' };
+
+  new Litepicker({
+    element: inputField,
+    plugins: ['mobilefriendly'],
+    singleMode: false,
+    format: 'MMM DD',
+    firstDay: 0,
+    lang,
+    minDate: new Date(new Date().setDate(new Date().getDate() - 1)),
+    numberOfMonths: 2,
+    tooltipText,
+    tooltipNumber: (totalDays : number) => {
+      return totalDays - 1;
+    },
+    setup: (picker: any) => {
+      picker.on('selected', (checkInDate : iDate, checkOutDate : iDate) => {
+
+        // https://direct-book.com/properties/HotelLiving35SuitesDirect?locale=es&items[0][adults]=2&items[0][children]=0&items[0][infants]=0&currency=COP&checkInDate=2024-10-02&checkOutDate=2024-10-03&trackPage=yes
+        const tmpCheckInDate : Date = checkInDate.dateInstance;
+        const strCheckInDate : string = `${tmpCheckInDate.getFullYear().toString()}-${(tmpCheckInDate.getMonth()+1).toString().padStart(2,'0')}-${tmpCheckInDate.getDate().toString().padStart(2,'0')}`;
+
+        const tmpCheckOutDate : Date = checkOutDate.dateInstance;
+        const strCheckOutDate : string = `${tmpCheckOutDate.getFullYear().toString()}-${(tmpCheckOutDate.getMonth()+1).toString().padStart(2,'0')}-${tmpCheckOutDate.getDate().toString().padStart(2,'0')}`;
+
+        const btnsBooking : NodeList = document.querySelectorAll('.btnBooking');
+        btnsBooking.forEach((value : Node) => {
+          const btn : HTMLAnchorElement = value as HTMLAnchorElement;
+          btn.href = `${urlBase}&checkInDate=${strCheckInDate}&checkOutDate=${strCheckOutDate}`;
+          console.debug(btn.href);
+        })
+      });
+    },
+  });
+}
+
+
+class DatePicker extends HTMLElement {
+  connectedCallback() {
+    if (document.getElementById('litepicker'))
+      setLitepicker(document.getElementById('litepicker') as HTMLInputElement, (this.dataset.lang == 'es') ? 'es' : 'en', this.dataset.urlsiteminder ?? '');
+  }
+}
+
+
+
+// if (document.getElementById('litepicker-desktop'))
+//   setLitepicker(document.getElementById('litepicker-desktop') as HTMLInputElement);
+
+
+customElements.define('date-picker', DatePicker);
+
+
+// interface iDate {
+//   dateInstance: Date,
+//   lang: string
+// }
+// const URLBASE = config[lang].URL_SITEMINDER;
+// console.debug('** litepicker', URL_SITEMINDER);
+
+// const setLitepicker = (inputField : HTMLInputElement) => {
+//   new Litepicker({
+//     element: inputField,
+//     plugins: ['mobilefriendly'],
+//     singleMode: false,
+//     format: 'DD/MMM/YYYY',
+//     firstDay: 0,
+//     lang: 'es-ES',
+//     minDate: new Date(new Date().setDate(new Date().getDate() - 1)),
+//     numberOfMonths: 2,
+//     tooltipText: {
+//       one: 'noche',
+//       other: 'noches'
+//     },
+//     tooltipNumber: (totalDays : number) => {
+//       return totalDays - 1;
+//     },
+//     setup: (picker) => {
+//       picker.on('selected', (checkInDate : iDate, checkOutDate : iDate) => {
+
+//         // https://direct-book.com/properties/HotelLiving35SuitesDirect?locale=es&items[0][adults]=2&items[0][children]=0&items[0][infants]=0&currency=COP&checkInDate=2024-10-02&checkOutDate=2024-10-03&trackPage=yes
+//         const tmpCheckInDate : Date = checkInDate.dateInstance;
+//         const strCheckInDate : string = `${tmpCheckInDate.getFullYear().toString()}-${(tmpCheckInDate.getMonth()+1).toString().padStart(2,'0')}-${tmpCheckInDate.getDate().toString().padStart(2,'0')}`;
+
+//         const tmpCheckOutDate : Date = checkOutDate.dateInstance;
+//         const strCheckOutDate : string = `${tmpCheckOutDate.getFullYear().toString()}-${(tmpCheckOutDate.getMonth()+1).toString().padStart(2,'0')}-${tmpCheckOutDate.getDate().toString().padStart(2,'0')}`;
+
+//         const btnsBooking : NodeList = document.querySelectorAll('.btnBooking');
+//         btnsBooking.forEach((value : Node) => {
+//           const btn : HTMLAnchorElement = value as HTMLAnchorElement;
+//           btn.href = `${urlBase}&checkInDate=${strCheckInDate}&checkOutDate=${strCheckOutDate}`;
+//           console.debug(btn.href);
+//         })
+//       });
+//     },
+//   });
+// }
+
+// if (document.getElementById('litepicker-mobile'))
+//   setLitepicker(document.getElementById('litepicker-mobile') as HTMLInputElement);
+
+// if (document.getElementById('litepicker-desktop'))
+//   setLitepicker(document.getElementById('litepicker-desktop') as HTMLInputElement);
+</script>
