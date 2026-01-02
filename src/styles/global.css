@@ -27,10 +27,14 @@
   --text-*: initial;
   --text-sm: 0.9rem;
   --text-sm--line-height: 1rem;
-  --text-base: 1.125rem;
+  --text-base: 1.25rem;
   --text-base--line-height: 1.5rem;
-  --text-md:1.35rem;
+  --text-md: 1.35rem;
   --text-md--line-height: 1.5rem;
+  --text-lg: 1.5rem;
+  --text-lg--line-height: 1.75rem;
+  --text-xl: 1.75rem;
+  --text-xl--line-height: 2rem;
 
   --drop-shadow-my-shadow: 0 0 6px oklch(50% 0 0);
 
@@ -41,7 +45,7 @@
 
 @theme inline {
   --font-title: var(--font-title);
-  /* --font-roboto-italic: var(--font-roboto-italic); */
+  --font-body: var(--font-body);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -164,14 +168,8 @@
 }
 
 @layer components {
-
   .box-container {
-    @apply
-      max-w-[85%]
-      mx-auto
-      desktop-1:w-[80%]
-      desktop-1:max-w-[1366px]
-      desktop-1:mx-auto
+    @apply desktop-1:w-[80%] desktop-1:max-w-341.5 desktop-1:mx-auto mx-auto max-w-[85%];
   }
 }
 
@@ -190,12 +188,13 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
 @keyframes wobble {
-  0%, 50% {
+  0%,
+  50% {
     transform: translateX(0%);
     transform-origin: 50% 50%;
   }
@@ -217,22 +216,22 @@ input[type=number] {
 }
 
 @keyframes kenburns-left {
-  0% { 
+  0% {
     transform: scale(1) translate(0, 0);
     transform-origin: 16% 50%;
   }
-  100% { 
+  100% {
     transform: scale(2) translate(-20px, 15px);
     transform-origin: left;
   }
 }
 
 @keyframes kenburns-right-invert {
-  0% { 
+  0% {
     transform: scale(2) translate(0, 0);
     transform-origin: left;
   }
-  100% { 
+  100% {
     transform: scale(1) translate(0, 0);
     transform-origin: 16% 50%;
   }

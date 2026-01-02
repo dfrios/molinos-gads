@@ -2,13 +2,15 @@
 import { Font } from "astro:assets";
 
 import "@/styles/global.css";
-import config from "@/data/config.json";
+import config from "@data/config.json";
 
-import MetaPixelHead from "@/components/base/MetaPixelHead.astro";
-import MetaPixelBody from "@/components/base/MetaPixelBody.astro";
-import GoogleTagManagerHead from "@/components/base/GoogleTagManagerHead.astro";
-import GoogleTagManagerBody from "@/components/base/GoogleTagManagerBody.astro";
-import OpenGraph from "@/components/base/OpenGraph.astro";
+import MetaPixelHead from "@components/base/MetaPixelHead.astro";
+import MetaPixelBody from "@components/base/MetaPixelBody.astro";
+import GoogleTagManagerHead from "@components/base/GoogleTagManagerHead.astro";
+import GoogleTagManagerBody from "@components/base/GoogleTagManagerBody.astro";
+import OpenGraph from "@components/base/OpenGraph.astro";
+import Header from "@components/sections/Header.astro";
+import Footer from "@components/sections/Footer.astro";
 
 import type { lang } from "@interfaces/lang";
 interface Props {
@@ -36,12 +38,19 @@ const constants = config[lang];
     <OpenGraph lang={lang} />
 
     <Font cssVariable="--font-title" preload />
-    <!-- <Font cssVariable="--font-roboto-italic" preload /> -->
+    <Font cssVariable="--font-body" preload />
+
   </head>
-  <body class="font-roboto clamp-[py,5,10] clamp-[text,sm,base] text-balance bg-background text-foreground-1">
+  <body class="font-body clamp-[text,base,xl] text-balance bg-background text-foreground-1">
+
     <GoogleTagManagerBody />
     <MetaPixelBody />
 
+    <Header lang={lang} />
+
     <slot />
+
+    <Footer lang={lang} />
+
   </body>
 </html>

@@ -44,26 +44,26 @@ export default defineConfig({
         cssVariable: "--font-title",
         variants: [
           {
-            weight: "100 200 300 400 500 700 800 900",
+            // weight: "100 200 300 400 500 700 800 900",
             style: "normal",
             src: ["./src/assets/fonts/Rasputin.otf"],
           },
         ],
       },
-      // {
-      //   provider: "local",
-      //   name: "roboto-italic",
-      //   cssVariable: "--font-roboto-italic",
-      //   variants: [
-      //     {
-      //       weight: "100 200 300 400 500 700 800 900",
-      //       style: "normal",
-      //       src: ["./src/assets/fonts/roboto-variable-italic.ttf"],
-      //     },
-      //   ],
-      // },
+      {
+        provider: "local",
+        name: "body",
+        cssVariable: "--font-body",
+        variants: [
+          {
+            weight: "300 400 700",
+            style: "normal",
+            src: ["./src/assets/fonts/Quicksand.ttf"],
+          },
+        ],
+      },
     ],
   },
 
-  site: "https://rasputin",
+  site: "https://gads.molinoshotel.com",
 });
