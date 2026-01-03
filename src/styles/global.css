@@ -90,6 +90,7 @@
   --font-body: var(--font-body);
 
   --color-overlay: var(--overlay);
+  --color-overlay-dark: var(--overlay-dark);
 }
 
 :root {
@@ -128,6 +129,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 
   --overlay: oklch(0 0 0 / 70.2%);
+  --overlay-dark: oklch(0% 0 0 / 80%);
 }
 
 .dark {
@@ -249,7 +251,7 @@ svg.logo-svg {
   circle {
     fill: transparent;
     stroke: transparent;
-    stroke-width: 10;
+    stroke-width: 4;
     stroke-dasharray: 580;
     stroke-dashoffset: 380;
     animation: 3s forwards 0s ease-in-out circleAnimation;
@@ -272,7 +274,7 @@ svg.logo-svg {
     stroke-dashoffset: 380;
   }
   30% {
-    stroke: #8c3c14;
+    stroke: oklch(0.9846 0.0124 75.37)
   }
   40% {
     fill: transparent;
@@ -284,7 +286,7 @@ svg.logo-svg {
   }
   100% {
     fill: #8c3c14;
-    stroke: #8c3c14;
+    stroke: oklch(0.9846 0.0124 75.37);
     stroke-dasharray: 1150;
     stroke-dashoffset: 0;
   }
