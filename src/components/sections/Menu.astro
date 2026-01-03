@@ -1,10 +1,15 @@
 ---
 import type { lang } from "@interfaces/lang";
 
+import DatePicker from "@/widgets/DatePicker.astro";
+import Button from "@/widgets/Button.astro";
+
 import SvgEnglish from "@assets/english.svg";
 import SvgSpanish from "@assets/spanish.svg";
 import SvgLogo from "@assets/logo.svg";
 
+import config from "@data/config.json";
+import labels from "@lang/global.json";
 import menu from "@data/menu.json";
 
 interface Props {
@@ -16,142 +21,141 @@ const { lang } = Astro.props;
 
 
 <!-- BEGIN MOBILE MENU -->
-<div class="absolute z-10 top-6 left-6 aspect-square desktop-1:hidden">
-  <a href={`/${lang}/`} target="_self">
-    <SvgLogo class="logo-svg w-20 mx-auto" />
-  </a>
-</div>
-<nav id="menu-mobile" class="fixed z-10 right-0 top-4 flex text-right justify-end desktop-1:hidden">
-  <label class="relative z-40 cursor-pointer px-3 py-6 right-4 bg-white/50" for="mobile-menu">
-    <input class="peer hidden" type="checkbox" id="mobile-menu" />
-    <div class="
-        relative 
-        z-50
-        block 
-        h-0.5
-        w-7 
-        bg-foreground-1
-        content-[''] 
-        before:absolute 
-        before:top-[-0.35rem] 
-        before:z-50 
-        before:block 
-        before:h-0.5
-        before:w-full 
-        before:bg-foreground-1 
-        before:transition-all 
-        before:duration-200 
-        before:ease-out 
-        before:content-[''] 
-        after:absolute 
-        after:bottom-[-0.35rem] 
-        after:block 
-        after:h-0.5
-        after:w-full 
-        after:bg-foreground-1 
-        after:transition-all 
-        after:duration-200 
-        after:ease-out 
-        after:content-[''] 
-        peer-checked:bg-transparent 
-        peer-checked:before:top-0 
-        peer-checked:before:w-full 
-        peer-checked:before:rotate-45 
-        peer-checked:before:transform 
-        peer-checked:after:bottom-0 
-        peer-checked:after:w-full 
-        peer-checked:after:-rotate-45 
-        peer-checked:after:transform
-    "></div>
-    <!-- BEGIN OVERLAY -->
-    <div class="fixed inset-0 z-40 hidden h-full w-full bg-overlay backdrop-blur-xl peer-checked:block">&nbsp;</div>
-    <!-- END OVERLAY -->
-    <div class="fixed top-0 right-0 z-40 h-full w-full translate-x-full overflow-y-auto overscroll-y-none transition duration-500 peer-checked:translate-x-0">
-      <div class="float-right min-h-full w-[60%] max-w-68 bg-background px-6 pt-12 shadow-2xl">
-        <div class="mt-12 tablet:pr-8">
-          <ul class="font-title *:border-foreground-1/10 *:border-t [&>*:last-child]:border-b [&>*:last-child]:pb-2">
-            {
-              menu.map(({label, href, target}) => {
-                return (
-                  <li class="my-1 pt-2 block">
-                    <a href={href} class="px-3 py-2 text-right block" target={target}>{label[lang]}</a>
-                  </li>
-                )
-              })
-            }
-          </ul>
-          <div class="mt-12 pr-4 flex flex-row gap-x-2 justify-end item-center">
-            {
-              lang === 'es' ?
-              <>
-                <a href="/en/" target="_self" class="text-xs">EN</a>
-                <a href="/en/" target="_self">
-                  <SvgEnglish class="w-8" />
-                </a>
-              </>
-              :
-              <>
-                <a href="/es/" target="_self" class="text-xs">ES</a>
-                <a href="/es/" target="_self">
-                  <SvgSpanish class="w-8" />
-                </a>
-              </>
-            }
-            
-          </div>
+<div class="absolute desktop-1:hidden">
+  <div class="relative z-10 top-6 left-6 aspect-square">
+    <a href={`/${lang}/`} target="_self">
+      <SvgLogo class="logo-svg w-20 mx-auto" />
+    </a>
+  </div>
+  <nav id="menu-mobile" class="fixed z-10 right-0 top-4 flex text-right justify-end desktop-1:hidden">
+    <label class="relative z-40 cursor-pointer px-3 py-6 right-4 bg-white/50" for="mobile-menu">
+      <input class="peer hidden" type="checkbox" id="mobile-menu" />
+      <div class="
+          relative 
+          z-50
+          block 
+          h-0.5
+          w-7 
+          bg-foreground-1
+          content-[''] 
+          before:absolute 
+          before:top-[-0.35rem] 
+          before:z-50 
+          before:block 
+          before:h-0.5
+          before:w-full 
+          before:bg-foreground-1 
+          before:transition-all 
+          before:duration-200 
+          before:ease-out 
+          before:content-[''] 
+          after:absolute 
+          after:bottom-[-0.35rem] 
+          after:block 
+          after:h-0.5
+          after:w-full 
+          after:bg-foreground-1 
+          after:transition-all 
+          after:duration-200 
+          after:ease-out 
+          after:content-[''] 
+          peer-checked:bg-transparent 
+          peer-checked:before:top-0 
+          peer-checked:before:w-full 
+          peer-checked:before:rotate-45 
+          peer-checked:before:transform 
+          peer-checked:after:bottom-0 
+          peer-checked:after:w-full 
+          peer-checked:after:-rotate-45 
+          peer-checked:after:transform
+      "></div>
+      <!-- BEGIN OVERLAY -->
+      <div class="fixed inset-0 z-40 hidden h-full w-full bg-overlay backdrop-blur-sm peer-checked:block">&nbsp;</div>
+      <!-- END OVERLAY -->
+      <div class="fixed top-0 right-0 z-40 h-full w-full translate-x-full overflow-y-auto overscroll-y-none transition duration-500 peer-checked:translate-x-0">
+        <div class="float-right min-h-full w-45 bg-background px-6 pt-12 shadow-2xl tablet:w-60">
+          <div class="mt-12 tablet:pr-8">
+            <ul class="font-title *:border-foreground-1/10 *:border-t [&>*:last-child]:border-b [&>*:last-child]:pb-2">
+              {
+                menu.map(({label, href, target}) => {
+                  return (
+                    <li class="my-1 pt-2 block">
+                      <a href={href} class="px-3 py-2 text-right block" target={target}>{label[lang]}</a>
+                    </li>
+                  )
+                })
+              }
+            </ul>
+            <div class="mt-12 pr-4 flex flex-row gap-x-2 justify-end item-center">
+              {
+                lang === 'es' ?
+                <>
+                  <a href="/en/" target="_self" class="text-xs">EN</a>
+                  <a href="/en/" target="_self">
+                    <SvgEnglish class="w-8" />
+                  </a>
+                </>
+                :
+                <>
+                  <a href="/es/" target="_self" class="text-xs">ES</a>
+                  <a href="/es/" target="_self">
+                    <SvgSpanish class="w-8" />
+                  </a>
+                </>
+              }
+            </div>
+            </div>
           <div class="text-center mt-16 aspect-square">
-            <svg viewBox="0 0 343.21 343.21" xmlns="http://www.w3.org/2000/svg" class="logo-svg w-24 mx-auto">
-              <g transform="translate(51.586 27.082)">
-                <circle cx="120.02" cy="144.52" r="166.31" />
-                <g transform="translate(.463 -1.2469)">
-                  <g stroke-width=".35278" class="logo-svg-molinos">
-                    <path d="m23.676 176.93h9.7995s-2.7839-1.3363-2.7839-5.0111v-33.964h-9.9665l-13.92 34.855h-4.343l-13.92-34.855h-9.9665v33.964c0 3.0623-2.7283 5.0111-2.7283 5.0111h9.7438s-2.7283-1.726-2.7283-5.0111v-29.9h2.7839l13.92 34.911 10.134-0.0557 13.92-34.855h2.7839v29.9c0 3.5078-2.7283 5.0111-2.7283 5.0111z"/>
-                    <path d="m58.475 141.41c9.2427 0 16.314 7.5166 16.314 16.036 0 8.3518-7.0712 15.98-16.314 15.98-9.2984 0-16.314-7.628-16.314-15.98 0-8.5189 7.0712-16.036 16.314-16.036zm-20.546 16.036c0 11.08 9.4654 20.044 20.546 20.044 11.08 0 20.546-8.9643 20.546-20.044 0-11.08-9.4654-20.1-20.546-20.1-11.08 0-20.546 9.02-20.546 20.1z"/>
-                    <path d="m111.76 172.81h-17.316c-2.1158 0-3.8418-1.726-3.8418-3.8418v-31.069h-7.0155s2.7283 1.726 2.7283 5.0111v29.009c0 2.8396-2.7283 5.0111-2.7283 5.0111l32.461-0.0557h0.11136l1.8374-11.47s-4.2873 7.4053-6.236 7.4053z"/>
-                    <path d="m128.41 142.92c0-3.7305 2.7283-5.0111 2.7283-5.0111h-9.7438s2.7283 1.6704 2.7283 5.0111v29.009c0 3.3407-2.7283 4.9554-2.7283 4.9554h9.7438s-2.7283-1.6147-2.7283-4.9554z"/>
-                    <path d="m167.38 137.96s2.784 1.4476 2.784 4.9554v29.9h-2.2828l-20.156-34.855h-9.6324v33.964c0 3.3964-2.7283 5.0111-2.7283 5.0111h9.7438s-2.7283-1.726-2.7283-5.0111v-29.9h2.951l20.156 34.855h8.9086v-33.964c0-3.5078 2.784-4.9554 2.784-4.9554z"/>
-                    <path d="m202.02 141.41c9.2427 0 16.314 7.5166 16.314 16.036 0 8.3518-7.0712 15.98-16.314 15.98-9.2984 0-16.314-7.628-16.314-15.98 0-8.5189 7.0712-16.036 16.314-16.036zm-20.546 16.036c0 11.08 9.4654 20.044 20.546 20.044s20.546-8.9643 20.546-20.044c0-11.08-9.4654-20.1-20.546-20.1s-20.546 9.02-20.546 20.1z"/>
-                    <path d="m232.58 148.98c0-5.1781 4.677-7.5723 12.806-7.5723 7.9621 0 12.639 2.7283 12.639 8.9643l4.8441 0.55679c0-5.5679-3.9532-13.474-17.483-13.474-13.14 0-17.093 5.7349-17.093 11.526 0 12.862 30.679 10.134 30.679 17.65 0 4.7327-4.5657 6.7928-13.363 6.7928-7.3496 0-13.363-1.7817-13.363-11.526l-4.7884-0.50111c0 11.024 6.1247 16.091 18.151 16.091 11.86 0 17.65-5.0668 17.65-10.857 0-11.693-30.679-9.1313-30.679-17.65z"/>
-                  </g>
-                  <g stroke-width=".035278" class="logo-svg-isotipo">
-                    <path d="m91.858 113.8c5.6586-5.716 11.261-11.663 17.189-17.265 4.1226-3.8964 10.687-4.0157 14.784-0.14605 5.988 5.6564 11.574 11.739 17.206 17.512-1.9392 1.9209-4.051 4.0121-6.3366 6.2756-4.8567-4.8726-9.9561-9.9935-15.062-15.108-2.7026-2.7076-3.4706-2.7157-6.1701 1e-3 -5.0952 5.129-10.174 10.274-15.301 15.454-2.2179-2.3636-4.2168-4.4937-6.3098-6.724"/>
-                    <path d="m121.16 126.29c-2.9157 0-5.4296 0.0194-7.9424-0.0212-0.37429-6e-3 -1.0693-0.2981-1.0668-0.44909 0.0332-2.0708-0.34043-4.3614 0.43992-6.1341 0.54963-1.2481 2.6169-2.2719 4.1543-2.5358 2.1939-0.37607 4.1832 1.6651 4.3882 3.9814 0.1397 1.5783 0.0268 3.1792 0.0268 5.1587"/>
-                    <path d="m86.306 95.272h14.863"/>
-                    <path d="m86.306 97.861h14.863v-5.1774h-14.863z"/>
-                    <path d="m132.7 95.362h14.863"/>
-                    <path d="m132.7 97.95h14.863v-5.1773h-14.863z"/>
-                    <path d="m94.448 73.705 13.517 13.517"/>
-                    <path d="m106.13 89.053-13.517-13.517 3.6608-3.6608 13.517 13.517z"/>
-                    <path d="m116.34 65.367v20.772"/>
-                    <path d="m113.76 86.139h5.1773v-20.772h-5.1773z"/>
-                    <path d="m138.64 73.74-14.189 14.189"/>
-                    <path d="m126.28 89.759-3.6608-3.6608 14.189-14.189 3.6608 3.6608z"/>
-                  </g>
-                </g>
-              </g>
-            </svg>
+            <SvgLogo class="logo-svg w-24 mx-auto" />
           </div>
         </div>
       </div>
-    </div>
-  </label>
-</nav>
+    </label>
+  </nav>
+</div>
 <!-- END MOBILE MENU -->
 
 <!-- BEGIN DESKTOP MENU -->
-<nav id="menu-desktop" class="w-full hidden desktop-1:block">
-  <ul class="flex flex-wrap justify-center flex-row gap-y-4 p-0 font-bold">
+<div class="relative mt-8 box-container w-full hidden items-center gap-x-4 desktop-1:flex desktop-1:flex-row">
+  <div class="basis-2/12">
+    <SvgLogo class="logo-svg w-20 ml-auto" />
+  </div>
+  <nav id="menu-desktop" class="basis-5/12">
+    <ul class="flex justify-center flex-row gap-x-8 p-0 font-title text-md">
+      {
+        menu.map(({label, href, target}) => {
+          return (
+            <li class="">
+              <a href={href} class="desktop-1:px-3 lg:px-4 xl:px-3/6" target={target}>
+                <span class="py-1">{label[lang]}</span>
+              </a>
+            </li>
+          )
+        })
+      }
+    </ul>
+  </nav>
+  <div class="flex flex-row base-3/12 items-center justify-center gap-x-2">
+    <DatePicker lang={lang} placeHolder={labels[lang].DATE_RANGE} position="desktop" xClass="border-foreground-1 border-1" />
+    <Button href={config[lang].URL_SITEMINDER} target="_blank" xClass="btnBooking">{labels[lang].BOOKING}</Button>
+  </div>
+  <div class="basis-2/12 flex flex-row gap-x-2 justify-start item-center pl-5">
     {
-      menu.map(({label, href, target}) => {
-        return (
-          <li class="rounded-lg">
-            <a href={href} class="lg:text-sizeMd xl:text-sizeLg desktop-1:px-3 lg:px-4 xl:px-3/6" target={target}>
-              <span class="py-1 border-t-[1px] border-b-[1px] border-colorRegular hover:border-t-4 hover:border-b-4">{label[lang]}</span>
-            </a>
-          </li>
-        )
-      })
+      lang === 'es' ?
+      <>
+        <a href="/en/" target="_self" class="text-xs">EN</a>
+        <a href="/en/" target="_self">
+          <SvgEnglish class="w-8" />
+        </a>
+      </>
+      :
+      <>
+        <a href="/es/" target="_self" class="text-xs">ES</a>
+        <a href="/es/" target="_self">
+          <SvgSpanish class="w-8" />
+        </a>
+      </>
     }
-  </ul>
-</nav>
+  </div>
+</div>
 <!-- END DESKTOP MENU -->
