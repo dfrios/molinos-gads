@@ -177,7 +177,7 @@
 
 @layer components {
   .box-container {
-    @apply desktop-1:w-[80%] desktop-1:max-w-341.5 desktop-1:mx-auto mx-auto max-w-[85%];
+    @apply mx-auto max-w-[85%] desktop-1:w-[80%] desktop-1:max-w-341.5;
   }
 }
 
