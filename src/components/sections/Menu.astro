@@ -116,7 +116,7 @@ const { lang } = Astro.props;
 <!-- END MOBILE MENU -->
 
 <!-- BEGIN DESKTOP MENU -->
-<div class="relative mt-8 box-container w-full hidden items-center gap-x-4 desktop-1:flex desktop-1:flex-row">
+<div class="relative z-1 mt-8 box-container w-full hidden items-center gap-x-4 text-background desktop-1:flex desktop-1:flex-row">
   <div class="basis-2/12">
     <SvgLogo class="logo-svg w-20 ml-auto" />
   </div>
@@ -126,7 +126,24 @@ const { lang } = Astro.props;
         menu.map(({label, href, target}) => {
           return (
             <li class="">
-              <a href={href} class="desktop-1:px-3 lg:px-4 xl:px-3/6" target={target}>
+              <a href={href} class="
+                block
+                relative
+                after:absolute
+                after:bottom-[-0.35rem]
+                after:block
+                after:h-px
+                after:w-full
+                after:bg-background
+                after:transition-all
+                after:duration-200
+                after:ease-out
+                after:content-['']
+                after:scale-0
+                after:opacity-0
+                hover:after:scale-100
+                hover:after:opacity-100
+              " target={target}>
                 <span class="py-1">{label[lang]}</span>
               </a>
             </li>
