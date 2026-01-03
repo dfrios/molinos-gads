@@ -30,7 +30,7 @@ const constants = config[lang];
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <script src="./src/scripts/scripts.ts" defer is:inline></script>
+    <script src="/src/scripts/scripts.ts" defer is:inline></script>
     <title>{constants.TITLE}</title>
 
     <GoogleTagManagerHead />
@@ -41,7 +41,7 @@ const constants = config[lang];
     <Font cssVariable="--font-body" preload />
 
   </head>
-  <body class="font-body clamp-[text,base,xl] text-balance bg-background text-foreground-1">
+  <body class="font-body clamp-[text,base,lg] text-balance bg-background text-foreground-1">
 
     <GoogleTagManagerBody />
     <MetaPixelBody />
