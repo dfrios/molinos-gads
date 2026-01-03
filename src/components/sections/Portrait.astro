@@ -1,0 +1,21 @@
+---
+import type { lang } from "@interfaces/lang";
+
+import Video from "@widgets/Video.astro";
+
+import labels from "@lang/global.json";
+
+interface Props {
+  lang: lang;
+}
+
+const { lang } = Astro.props;
+---
+
+
+<section>
+  <div class="fixed top-0 left-0 overflow-hidden -z-1 h-dvh w-dvw">
+    <Video srcVideo="portrait-background" xClass="object-cover w-full h-full" autoplay disablepictureinpicture loop muted playsinline />
+  </div>
+  <div class="fixed top-0 left-0 overflow-hidden z-0 h-dvh w-dvw bg-overlay-dark"></div>
+</section>

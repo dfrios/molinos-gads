@@ -1,15 +1,10 @@
 ---
 import MainLayout from "@layouts/MainLayout.astro";
-
-import Header from "@components/sections/Header.astro";
-import Footer from "@components/sections/Footer.astro";
+import Portrait from "@components/sections/Portrait.astro";
 
 const lang = "es";
 ---
 
 <MainLayout lang={lang}>
-  <p class="font-title">Título</p>
-  <p class="font-body font-light">Cuerpo</p>
-  <p class="font-body">Cuerpo</p>
-  <p class="font-body font-bold">Cuerpo</p>
+  <Portrait lang={lang} />
 </MainLayout>
