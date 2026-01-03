@@ -1,0 +1,20 @@
+---
+import { twMerge } from 'tailwind-merge';
+
+interface Props {
+  srcVideo: string;
+  srcPoster?: string;
+  xClass?: string;
+  [key: string]: undefined | string | boolean;
+}
+
+const { srcVideo, srcPoster, xClass, ...props } = Astro.props;
+
+const srcVideoArray = srcVideo.split('.');
+---
+
+
+  <video controls poster={srcPoster ? `/img/${srcPoster}` : ''} preload="auto" class={twMerge('', xClass)} {...props}>
+    <source src={`/img/${srcVideoArray[0]}.webm`} type="video/webm" />
+    <source src={`/img/${srcVideoArray[0]}.mp4`} type="video/mp4" />
+  </video>
