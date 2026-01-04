@@ -75,7 +75,7 @@ const setLitepicker = (inputField : HTMLInputElement, lang: ('es' | 'en'), urlBa
         btnsBooking.forEach((value : Node) => {
           const btn : HTMLAnchorElement = value as HTMLAnchorElement;
           btn.href = `${urlBase}&checkInDate=${strCheckInDate}&checkOutDate=${strCheckOutDate}`;
-          console.debug(btn.href);
+          // console.debug(btn.href);
         })
       });
     },
@@ -91,12 +91,12 @@ class DatePicker extends HTMLElement {
       litepickerInputs.forEach((litepicker) => {
         if ((this.dataset.position === 'desktop') && (window.screen.width >= Number(this.dataset.desktopbreakpoint))) {
           setLitepicker(litepicker as HTMLInputElement, (this.dataset.lang == 'es') ? 'es' : 'en', this.dataset.urlsiteminder ?? '');
-          console.debug(this.dataset.position, 'califica 1');
+          // console.debug(this.dataset.position, 'califica 1');
         }
         else {
           if ((this.dataset.position === 'mobile') && (window.screen.width < Number(this.dataset.desktopbreakpoint))) {
             setLitepicker(litepicker as HTMLInputElement, (this.dataset.lang == 'es') ? 'es' : 'en', this.dataset.urlsiteminder ?? '');
-            console.debug(this.dataset.position, 'califica 2');
+            // console.debug(this.dataset.position, 'califica 2');
           }
         }
       })
