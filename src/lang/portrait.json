@@ -6,15 +6,15 @@
     "portrait" : [
       {
         "text": "única",
-        "width": "7rem"
+        "width": "8rem"
       },
       {
         "text": "cosmopolita",
-        "width": "12rem"
+        "width": "14rem"
       },
       {
         "text": "memorable",
-        "width": "11rem"
+        "width": "15rem"
       }
     ]
   },
@@ -25,15 +25,15 @@
     "portrait" : [
       {
         "text": "worth repeating",
-        "width": "14rem"
+        "width": "17rem"
       },
       {
         "text": "close to commerce",
-        "width": "16rem"
+        "width": "19rem"
       },
       {
         "text": "to remember",
-        "width": "12rem"
+        "width": "15rem"
       }
     ]
   }

@@ -37,7 +37,7 @@ const { lang } = Astro.props;
       <p id="portrait-textbelow" class="mt-4 opacity-0 w-full max-w-140 mx-auto">{ labels[lang].textBelow }</p>
     </div>
 
-    <div class="basis-1/11 text-center mb-24">
+    <div id="portrait-footer" class="basis-1/11 text-center mb-24 opacity-0">
       { labels[lang].textFooter }
     </div>
   </div>
@@ -74,15 +74,24 @@ const { lang } = Astro.props;
         });
       }
     });
-    
-    console.debug('=== The end ===');
+  }
+
+
+  const animateTextFooter = () => {
+    const timeline = gsap.timeline();
+
+    timeline.to('#portrait-footer', { delay: delayBetweenMessages, opacity: 1 });
   }
 
 
   const animatePortrait = () => {
     const timeline = gsap.timeline({
       defaults: { duration: defaultDuration },
-      onComplete: () => { setTimeout(animateTextBelow, delayBetweenMessages) }
+      onComplete: () => {
+        setTimeout(
+          () => { animateTextBelow(); animateTextFooter()},
+          delayBetweenMessages)
+      }
     });
 
     itemList.forEach((item) => {
