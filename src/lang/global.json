@@ -1,10 +1,10 @@
 {
   "es": {
     "BOOKING": "Reservar",
-    "DATE_RANGE": "Fechas"
+    "DATE_RANGE": "Elija fecha"
   },
   "en": {
     "BOOKING": "Book",
-    "DATE_RANGE": "Dates"
+    "DATE_RANGE": "Select date"
   }
 }
