@@ -19,21 +19,27 @@ const { lang } = Astro.props;
   </div>
   <div class="fixed top-0 left-0 overflow-hidden -z-1 h-dvh w-dvw bg-overlay-dark"></div>
 
-  <div class="text-background text-center box-container h-dvh flex flex-col justify-center clamp-[text,lg,2xl]">
-    <p class="">{labels[lang].textAbove}</p>
-    <div class="mt-2 font-bold border border-background mx-auto h-10 w-0 flex flex-col items-center justify-center overflow-hidden" id="portrait-container">
-      <div id="portrait-content"></div>
+  <div class="box-container flex flex-col h-dvh items-center justify-center text-background text-center clamp-[text,lg,2xl]">
+    <div class="basis-11/12 flex flex-col justify-center">
+      <p class="">{ labels[lang].textAbove }</p>
+      <div class="mt-2 font-bold border border-background mx-auto h-10 w-0 flex flex-col items-center justify-center overflow-hidden" id="portrait-container">
+        <div id="portrait-content"></div>
+      </div>
+      <ul class="hidden" id="portrait-items" aria-hidden="true" aria-label="única y memorable">
+        {
+          labels[lang].portrait.map((label) => {
+            return (
+              <li data-width={label.width} class="opacity-0">{label.text}</li>
+            )
+          })
+        }
+      </ul>
+      <p id="portrait-textbelow" class="mt-4 opacity-0 w-full max-w-140 mx-auto">{ labels[lang].textBelow }</p>
     </div>
-    <ul class="hidden" id="portrait-items" aria-hidden="true" aria-label="única y memorable">
-      {
-        labels[lang].portrait.map((label) => {
-          return (
-            <li data-width={label.width} class="opacity-0">{label.text}</li>
-          )
-        })
-      }
-    </ul>
-    <p id="portrait-textbelow" class="mt-4 opacity-0">{labels[lang].textBelow}</p>
+
+    <div class="basis-1/11 text-center mb-24">
+      { labels[lang].textFooter }
+    </div>
   </div>
 </section>
 
