@@ -1,0 +1,46 @@
+{
+  "es": {
+    "textAbove": "Una experiencia",
+    "textBelow": "donde la sostenibilidad y la conciencia ambiental son pilares fundamentales",
+    "portrait" : [
+      {
+        "text": "como en casa",
+        "width": "13rem"
+      },
+      {
+        "text": "única",
+        "width": "7rem"
+      },
+      {
+        "text": "cosmopolita",
+        "width": "12rem"
+      },
+      {
+        "text": "memorable",
+        "width": "11rem"
+      }
+    ]
+  },
+  "en": {
+    "textAbove": "An experience",
+    "textBelow": "where sustainability and environmental awareness are fundamental pillars",
+    "portrait" : [
+      {
+        "text": "like at home",
+        "width": "11rem"
+      },
+      {
+        "text": "worth repeating",
+        "width": "14rem"
+      },
+      {
+        "text": "close to commerce",
+        "width": "16rem"
+      },
+      {
+        "text": "to remember",
+        "width": "12rem"
+      }
+    ]
+  }
+}

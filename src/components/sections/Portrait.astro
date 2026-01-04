@@ -3,7 +3,7 @@ import type { lang } from "@interfaces/lang";
 
 import Video from "@widgets/Video.astro";
 
-import labels from "@lang/global.json";
+import labels from "@lang/portrait.json";
 
 interface Props {
   lang: lang;
@@ -14,8 +14,82 @@ const { lang } = Astro.props;
 
 
 <section>
-  <div class="fixed top-0 left-0 overflow-hidden -z-1 h-dvh w-dvw">
+  <div class="fixed top-0 left-0 overflow-hidden -z-2 h-dvh w-dvw">
     <Video srcVideo="portrait-background" xClass="object-cover w-full h-full" autoplay disablepictureinpicture loop muted playsinline />
   </div>
-  <div class="fixed top-0 left-0 overflow-hidden z-0 h-dvh w-dvw bg-overlay-dark"></div>
+  <div class="fixed top-0 left-0 overflow-hidden -z-1 h-dvh w-dvw bg-overlay-dark"></div>
+
+  <div class="text-background text-center box-container h-dvh flex flex-col justify-center clamp-[text,lg,2xl]">
+    <p class="">{labels[lang].textAbove}</p>
+    <div class="mt-2 font-bold border border-background mx-auto h-10 w-0 flex flex-col items-center justify-center overflow-hidden" id="portrait-container">
+      <div id="portrait-content"></div>
+    </div>
+    <ul class="hidden" id="portrait-items" aria-hidden="true" aria-label="única y memorable">
+      {
+        labels[lang].portrait.map((label) => {
+          return (
+            <li data-width={label.width} class="opacity-0">{label.text}</li>
+          )
+        })
+      }
+    </ul>
+    <p id="portrait-textbelow" class="mt-4 opacity-0">{labels[lang].textBelow}</p>
+  </div>
 </section>
+
+
+<script>
+  import { gsap } from 'gsap';
+  import { SplitText } from 'gsap/SplitText'
+
+  const defaultDuration = 0.2;
+  const delayBetweenMessages = 1.5;
+  const portraitContainer = document.getElementById('portrait-container') as HTMLDivElement;
+  const portraitContent = document.getElementById('portrait-content') as HTMLDivElement;
+  const itemList = document.querySelectorAll('#portrait-items li') as NodeListOf<HTMLLIElement>;
+  const textBelow = document.getElementById('portrait-textbelow') as HTMLParagraphElement;
+
+
+  const animateTextBelow = () => {
+    gsap.registerPlugin(SplitText);
+
+    textBelow.classList.remove('opacity-0');
+
+    SplitText.create(textBelow, {
+      type: "lines, words",
+      mask: "lines",
+      autoSplit: true,
+      onSplit(self) {
+        return gsap.from(self.words, {
+          duration: delayBetweenMessages, 
+          y: 100, 
+          autoAlpha: 0, 
+          stagger: 0.05
+        });
+      }
+    });
+    
+    console.debug('=== The end ===');
+  }
+
+
+  const animatePortrait = () => {
+    const timeline = gsap.timeline({
+      defaults: { duration: defaultDuration },
+      onComplete: () => { setTimeout(animateTextBelow, delayBetweenMessages) }
+    });
+
+    itemList.forEach((item) => {
+      timeline.to(portraitContent, { delay: delayBetweenMessages, y: -25, opacity: 0 });
+      timeline.set(portraitContent, { innerText: item.innerText });
+      timeline.set(portraitContent, { y: 25, opacity: 0 });
+      timeline.to(portraitContainer, { width: item.dataset.width });
+      timeline.to(portraitContent, { y: 0, opacity: 1}, `-=${defaultDuration}`);
+    })
+
+    timeline.play();
+  }
+  
+  window.addEventListener('load', animatePortrait);
+
+</script>
