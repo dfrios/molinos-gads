@@ -1,12 +1,8 @@
 {
   "es": {
     "textAbove": "Una experiencia",
-    "textBelow": "donde la sostenibilidad y la conciencia ambiental son pilares fundamentales",
+    "textBelow": "donde la comodidad de sentirte como en casa es nuestro pilar fundamental",
     "portrait" : [
-      {
-        "text": "como en casa",
-        "width": "13rem"
-      },
       {
         "text": "única",
         "width": "7rem"
@@ -23,12 +19,8 @@
   },
   "en": {
     "textAbove": "An experience",
-    "textBelow": "where sustainability and environmental awareness are fundamental pillars",
+    "textBelow": "where the comfort of feeling at home is our fundamental pillar",
     "portrait" : [
-      {
-        "text": "like at home",
-        "width": "11rem"
-      },
       {
         "text": "worth repeating",
         "width": "14rem"
