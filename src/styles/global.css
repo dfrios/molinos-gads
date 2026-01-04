@@ -37,6 +37,8 @@
   --text-lg--line-height: 1.75rem;
   --text-xl: 1.75rem;
   --text-xl--line-height: 2rem;
+  --text-2xl: 2rem;
+  --text-2xl--line-height: 2.5rem;
 
   --drop-shadow-my-shadow: 0 0 6px oklch(50% 0 0);
 
