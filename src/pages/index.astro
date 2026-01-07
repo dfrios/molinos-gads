@@ -11,9 +11,7 @@ import Config from "@data/config.json";
     <title>{Config.es.TITLE}</title>
     <script>
       const locale = new Intl.Locale(navigator.language);
-
-      if (locale.language === "en") window.location.href = "/en";
-      else window.location.href = "/es";
+      window.location.href = locale.language === "en" ? "/en/" : "/es/";
     </script>
   </head>
   <body> </body>

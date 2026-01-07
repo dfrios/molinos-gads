@@ -1,5 +1,6 @@
 ---
 import { Font } from "astro:assets";
+import { ClientRouter } from "astro:transitions";
 
 import "@/styles/global.css";
 import config from "@data/config.json";
@@ -39,10 +40,10 @@ const constants = config[lang];
 
     <Font cssVariable="--font-title" preload />
     <Font cssVariable="--font-body" preload />
-
   </head>
-  <body class="font-body clamp-[text,xs,lg] text-balance bg-background text-foreground-1">
-
+  <body
+    class="font-body clamp-[text,xs,lg] bg-background text-foreground-1 text-balance"
+  >
     <GoogleTagManagerBody />
     <MetaPixelBody />
 
@@ -51,6 +52,5 @@ const constants = config[lang];
     <slot />
 
     <Footer lang={lang} />
-
   </body>
 </html>
