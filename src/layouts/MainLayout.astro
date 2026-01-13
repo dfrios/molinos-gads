@@ -28,7 +28,10 @@ const constants = config[lang];
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="description" content={constants.DESCRIPTION} />
     <meta name="generator" content={Astro.generator} />
+    <meta name="author" content="Mosketeros Group">
+    <meta name="robots" content="index, follow">
     <link rel="sitemap" href="/sitemap-index.xml" />
     <script src="/src/scripts/scripts.ts" defer is:inline></script>
     <title>{constants.TITLE}</title>
