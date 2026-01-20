@@ -11,5 +11,8 @@
     "DESCRIPTION": "A unique and memorable experience, where sustainability and environmental awareness are fundamental pillars.",
     "URL":  "https://gads.molinoshotel.com/",
     "URL_SITEMINDER": "https://direct-book.com/properties/HotelMolinosPlazaDIRECT?locale=en&currency=USD&promocode=DescubreMolinos"
-  }
+  },
+
+  "META_PIXEL": "*************",
+  "GTM": "????????????"
 }
