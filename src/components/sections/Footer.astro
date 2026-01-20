@@ -14,7 +14,7 @@ interface Props {
 const { lang } = Astro.props;
 ---
 
-<footer class="bg-overlay absolute bottom-0 left-0 w-dvw py-4 desktop-1:hidden">
+<footer class="bg-overlay fixed bottom-0 left-0 w-dvw py-4 z-1000 desktop-1:hidden">
   <div class="flex flex-row items-center justify-center gap-x-2">
     <DatePicker lang={lang} placeHolder={labels[lang].DATE_RANGE} position="mobile" />
     <Button href={config[lang].URL_SITEMINDER} target="_blank" xClass="btnBooking">{labels[lang].BOOKING}</Button>
