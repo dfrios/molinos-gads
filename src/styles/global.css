@@ -56,6 +56,7 @@
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
   --color-background: var(--background);
+  --color-background-semitransparent: oklch(from var(--background) l c h / 56.47%);
   --color-foreground-1: var(--foreground-1);
   --color-foreground-2: var(--foreground-2);
   --color-card: var(--card);

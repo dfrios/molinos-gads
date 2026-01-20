@@ -21,10 +21,10 @@ const { lang } = Astro.props;
 
 
 <!-- BEGIN MOBILE MENU -->
-<div class="absolute desktop-1:hidden">
+<div class="absolute top-0 left-0 w-full flex justify-between desktop-1:hidden" id="mobile-menu">
   <div class="relative z-10 top-6 left-6 aspect-square">
     <a href={`/${lang}/`} target="_self">
-      <SvgLogo class="logo-svg w-20 mx-auto" />
+      <SvgLogo class="logo-svg w-20 mx-auto" id="mobile-menu-logo" />
     </a>
   </div>
   <nav id="menu-mobile" class="fixed z-10 right-0 top-4 flex text-right justify-end desktop-1:hidden">
@@ -118,7 +118,7 @@ const { lang } = Astro.props;
 <!-- BEGIN DESKTOP MENU -->
 <div class="relative z-1 mt-8 box-container w-full hidden items-center gap-x-4 text-background desktop-1:flex desktop-1:flex-row">
   <div class="basis-2/12">
-    <SvgLogo class="logo-svg w-20 ml-auto" />
+    <SvgLogo class="logo-svg w-20 ml-auto" id="desktop-menu-logo" />
   </div>
   <nav id="menu-desktop" class="basis-5/12">
     <ul class="flex justify-center flex-row gap-x-8 p-0 font-title text-md">
