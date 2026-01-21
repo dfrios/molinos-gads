@@ -26,18 +26,18 @@
 
   --text-*: initial;
   --text-xs: 1rem;
-  --text-xs--line-height: 1.25rem;
-  --text-sm: 1.25rem;
-  --text-sm--line-height: 1.5rem;
+  --text-xs--line-height: 1.125rem;
+  --text-sm: 1.125rem;
+  --text-sm--line-height: 1.25rem;
   --text-base: 1.25rem;
   --text-base--line-height: 1.5rem;
-  --text-md: 1.35rem;
-  --text-md--line-height: 1.5rem;
-  --text-lg: 1.5rem;
-  --text-lg--line-height: 1.75rem;
-  --text-xl: 1.75rem;
-  --text-xl--line-height: 2rem;
-  --text-2xl: 2rem;
+  --text-md: 1.5rem;
+  --text-md--line-height: 1.75rem;
+  --text-lg: 1.75rem;
+  --text-lg--line-height: 2rem;
+  --text-xl: 2rem;
+  --text-xl--line-height: 2.25rem;
+  --text-2xl: 2.25rem;
   --text-2xl--line-height: 2.5rem;
 
   --drop-shadow-my-shadow: 0 0 6px oklch(50% 0 0);
