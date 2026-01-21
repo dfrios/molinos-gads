@@ -1,13 +1,15 @@
 import { gsap } from "gsap";
 import { Observer } from "gsap/Observer";
 
+import { triggerSectionAmenities, untriggerSectionAmenities } from './amenities';
+
 gsap.registerPlugin(Observer);
 
 let currentSection = 0;
 let isMoving = false;
 
 const mobileMenu: HTMLDivElement = document.getElementById(
-  "mobile-menu",
+  "mobile-menu-div",
 ) as HTMLDivElement;
 const mobileMenuLogo: HTMLOrSVGElement = document.getElementById(
   "mobile-menu-logo",
@@ -16,9 +18,9 @@ const mobileMenuLogo: HTMLOrSVGElement = document.getElementById(
 const sections = gsap.utils.toArray(
   "section.slider",
 ) as Array<gsap.TweenTarget>;
-gsap.set(sections, { yPercent: 100 });
+gsap.set(sections, { top: '100vh' });
 gsap.set(sections[currentSection], {
-  yPercent: 0,
+  top: 0,
   display: "flex",
   position: "relative",
 });
@@ -38,19 +40,19 @@ const moveSection = (newSection: number) => {
     },
   });
 
-  timeline.add("point");
+  timeline.add("keypoint");
 
   if (newSection > currentSection) {
     gsap.set(sections[newSection], {
       display: "flex",
-      yPercent: 100,
+      top: '100vh',
       zIndex: 200,
     });
-    timeline.to(sections[newSection], { yPercent: 0 }, "point");
+    timeline.to(sections[newSection], { top: 0 }, "keypoint");
   }
 
   if (newSection < currentSection) {
-    timeline.to(sections[currentSection], { yPercent: 100 }, "point");
+    timeline.to(sections[currentSection], { top: '100vh' }, "keypoint");
     timeline.set(sections[currentSection], { display: "none" });
   }
 
@@ -58,34 +60,36 @@ const moveSection = (newSection: number) => {
     if (currentSection === 0 && newSection === 1) {
       timeline.to(
         mobileMenuLogo,
-        {
-          scale: 0.75,
-          translateY: "-25px",
-          onComplete: () => {
-            if (mobileMenu) {
-              mobileMenu.classList.add("bg-background-semitransparent");
-            }
-          },
-        },
-        "point",
+        { scale: 0.75, translateY: "-25px" },
+        "keypoint",
       );
+      if (mobileMenu) {
+        timeline.to(mobileMenu, { height: "5rem" }, "keypoint");
+      }
     }
     if (currentSection === 1 && newSection === 0) {
-      if (mobileMenu) {
-        mobileMenu.classList.remove("bg-background-semitransparent");
-      }
       timeline.to(
         mobileMenuLogo,
         {
           scale: 1,
           translateY: "0",
         },
-        "point",
+        "keypoint",
       );
+      if (mobileMenu) {
+        timeline.to(mobileMenu, { height: 0 }, "keypoint");
+      }
     }
   }
 
   currentSection = newSection;
+
+  if ((currentSection + 1) === 2) {
+    triggerSectionAmenities();
+  }
+  else {
+    untriggerSectionAmenities();
+  }
 };
 
 /**
@@ -94,7 +98,7 @@ const moveSection = (newSection: number) => {
  */
 const handleUp = () => {
   if (isMoving) return;
-  if (currentSection === sections.length) return;
+  if (currentSection === (sections.length - 1)) return;
 
   isMoving = true;
   moveSection(currentSection + 1);

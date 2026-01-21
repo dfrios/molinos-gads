@@ -1,0 +1,110 @@
+{
+  "es": [
+    {
+      "icon": "icon-pax",
+      "text": "Capacidad hasta para 2 personas + 1 niño"
+    },
+    {
+      "icon": "icon-bed",
+      "text": "Cama Queen + cama adicional a solicitud"
+    },
+    {
+      "icon": "icon-shower",
+      "text": "Baño"
+    },
+    {
+      "icon": "icon-tv",
+      "text": "TV LCD"
+    },
+    {
+      "icon": "icon-jacuzzi",
+      "text": "Jacuzzi"
+    },
+    {
+      "icon": "icon-pot",
+      "text": "Cocina integral"
+    },
+    {
+      "icon": "icon-refrigerator",
+      "text": "Nevera"
+    },
+    {
+      "icon": "icon-hanger",
+      "text": "Closet"
+    },
+    {
+      "icon": "icon-balcony",
+      "text": "Terraza - patio con comedor auxiliar"
+    },
+    {
+      "icon": "icon-ac",
+      "text": "Aire acondicionado"
+    },
+    {
+      "icon": "icon-bbq",
+      "text": "Mini-bar / Barril para asados"
+    },
+    {
+      "icon": "icon-star",
+      "text": "Amenidades"
+    },
+    {
+      "icon": "icon-wifi",
+      "text": "WiFi"
+    }
+  ],
+  "en": [
+    {
+      "icon": "icon-pax",
+      "text": "Capacity up to 2 people + 1 child"
+    },
+    {
+      "icon": "icon-bed",
+      "text": "Queen size bed + additional bed on request"
+    },
+    {
+      "icon": "icon-shower",
+      "text": "Bathroom"
+    },
+    {
+      "icon": "icon-tv",
+      "text": "TV LCD"
+    },
+    {
+      "icon": "icon-jacuzzi",
+      "text": "Jacuzzi"
+    },
+    {
+      "icon": "icon-pot",
+      "text": "Kitchen"
+    },
+    {
+      "icon": "icon-refrigerator",
+      "text": "Refrigerator"
+    },
+    {
+      "icon": "icon-hanger",
+      "text": "Closet"
+    },
+    {
+      "icon": "icon-balcony",
+      "text": "Terrace - patio with auxiliary dining table"
+    },
+    {
+      "icon": "icon-ac",
+      "text": "Air-conditioned"
+    },
+    {
+      "icon": "icon-bbq",
+      "text": "Mini-bar / Barbecue barrel"
+    },
+    {
+      "icon": "icon-star",
+      "text": "Amenities"
+    },
+    {
+      "icon": "icon-wifi",
+      "text": "WiFi"
+    }
+  ]
+}

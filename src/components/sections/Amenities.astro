@@ -1,0 +1,37 @@
+---
+import type { lang } from "@interfaces/lang";
+
+import labels from "@lang/amenities.json";
+
+import Svg from "@widgets/Svg.astro";
+
+interface Props {
+  lang: lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<section
+  class="slider h-dvh bg-[url('/img/amenities-background.avif')] bg-cover bg-position-[-27rem_0] bg-no-repeat flex flex-row justify-end items-center tablet:bg-auto desktop-1:bg-center"
+  id="section-amenities"
+>
+  <div
+    class="to-overlay-dark overlay fixed top-0 left-0 -z-1 h-dvh w-dvw overflow-hidden bg-linear-to-r from-transparent to-70%"
+  ></div>
+
+  <div class="my-20 desktop-1:mb-0">
+    <div class="flex flex-col gap-y-4 justify-center text-foreground-2 w-60 tablet:w-100 desktop-1:w-160">
+    {
+      labels[lang].map((label) => {
+        return (
+          <div class="amenities flex flex-row items-center gap-x-4">
+            <p><Svg iconName={label.icon} class="w-5" /></p>
+            <p>{label.text}</p>
+          </div>
+        )
+      })
+    }
+    </div>
+  </div>
+</section>
