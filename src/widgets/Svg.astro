@@ -1,0 +1,15 @@
+---
+const icons = import.meta.glob('../assets/*.svg', { eager: true });
+
+interface Props {
+  iconName: string;
+  [key: string]: string | undefined;
+}
+
+const { iconName, ...props } = Astro.props;
+
+const iconPath : string = `../assets/${iconName}.svg`;
+const IconComponent = icons[iconPath].default;
+---
+
+<IconComponent {...props} />
