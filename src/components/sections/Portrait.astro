@@ -13,16 +13,16 @@ const { lang } = Astro.props;
 ---
 
 
-<section class="slider h-dvh">
+<section class="slider h-dvh" id="section-portrait">
   <div class="fixed top-0 left-0 overflow-hidden -z-2 h-dvh w-dvw">
     <Video srcVideo="portrait-background" xClass="object-cover w-full h-full" autoplay disablepictureinpicture loop muted playsinline />
   </div>
   <div class="fixed top-0 left-0 overflow-hidden -z-1 h-dvh w-dvw bg-overlay-dark"></div>
 
-  <div class="box-container flex flex-col h-dvh items-center justify-center text-background text-center clamp-[text,lg,2xl]">
+  <div class="box-container flex flex-col h-dvh items-center justify-center text-foreground-2 text-center clamp-[text,md,2xl]">
     <div class="basis-11/12 flex flex-col justify-center">
       <p class="">{ labels[lang].textAbove }</p>
-      <div class="mt-2 font-bold border border-background mx-auto h-10 w-0 flex flex-col items-center justify-center overflow-hidden" id="portrait-container">
+      <div class="mt-2 font-bold border border-foreground-2 mx-auto h-10 w-0 flex flex-col items-center justify-center overflow-hidden" id="portrait-container">
         <div id="portrait-content"></div>
       </div>
       <ul class="hidden" id="portrait-items" aria-hidden="true" aria-label="única y memorable">
