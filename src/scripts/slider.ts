@@ -2,6 +2,7 @@ import { gsap } from "gsap";
 import { Observer } from "gsap/Observer";
 
 import { triggerSectionAmenities, untriggerSectionAmenities } from './amenities';
+import { triggerGallery } from "./gallery";
 
 gsap.registerPlugin(Observer);
 
@@ -89,6 +90,10 @@ const moveSection = (newSection: number) => {
   }
   else {
     untriggerSectionAmenities();
+  }
+
+  if ((currentSection + 1) === 3) {
+    triggerGallery();
   }
 };
 

@@ -1,7 +1,8 @@
 ---
 import MainLayout from "@layouts/MainLayout.astro";
 import Portrait from "@components/sections/Portrait.astro";
-import Amenities from "@/components/sections/Amenities.astro";
+import Amenities from "@components/sections/Amenities.astro";
+import Gallery from "@components/sections/Gallery.astro";
 
 const lang = "en";
 ---
@@ -9,4 +10,5 @@ const lang = "en";
 <MainLayout lang={lang}>
   <Portrait lang={lang} />
   <Amenities lang={lang} />
+  <Gallery />
 </MainLayout>
