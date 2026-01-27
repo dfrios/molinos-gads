@@ -1,5 +1,4 @@
 import { gsap } from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const overlayDiv: HTMLDivElement = document.querySelector(
   "#section-amenities .overlay",
